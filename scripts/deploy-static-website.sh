@@ -18,4 +18,3 @@ export AWS_CONFIG_FILE=.aws
 aws_args=( --endpoint-url http://localhost:4567 )
 aws s3 ls "${aws_args[@]}"
 aws s3 sync "${aws_args[@]}" ./website/ s3://crossplane-s3-bucket --acl public-read
-curl -v -k -H "Host: localhost.localstack.cloud" http://localhost:4566
