@@ -1,3 +1,5 @@
+# https://github.com/crossplane-contrib/provider-upjet-aws/tree/main/examples-generated/s3
+---
 apiVersion: s3.aws.upbound.io/v1beta1
 kind: Bucket
 metadata:
