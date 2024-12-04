@@ -20,4 +20,5 @@ aws_args=( --endpoint-url http://localhost:4566 --region us-east-1 )
 aws sts get-caller-identity "${aws_args[@]}"
 aws s3 ls "${aws_args[@]}"
 # FIXME:
+# https://github.com/crossplane-contrib/provider-upjet-aws/issues/1549
 aws s3 sync "${aws_args[@]}" ./website/ s3://crossplane-s3-bucket --acl public-read
