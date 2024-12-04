@@ -14,7 +14,10 @@ kubectl get buckets -n crossplane-system
 
 # https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-endpoints.html
 kubectl get secret localstack-aws-token -n crossplane-system  -o jsonpath="{.data.credentials}" | base64 -d > .aws
+export AWS_PAGER=""
 export AWS_CONFIG_FILE=.aws
-aws_args=( --endpoint-url http://localhost:4567 )
+aws_args=( --endpoint-url http://localhost:4566 --region us-east-1 )
+aws sts get-caller-identity "${aws_args[@]}"
 aws s3 ls "${aws_args[@]}"
+# FIXME:
 aws s3 sync "${aws_args[@]}" ./website/ s3://crossplane-s3-bucket --acl public-read
