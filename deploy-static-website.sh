@@ -9,8 +9,8 @@ set -e -o pipefail
 
 #kubectl get providers
 kubectl get providers provider-aws-s3
-kubectl get buckets -n crossplane-system
 kubectl apply -f s3-website-bucket.yaml
+kubectl get buckets -n crossplane-system
 
 # https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-endpoints.html
 kubectl get secret localstack-aws-token -n crossplane-system  -o jsonpath="{.data.credentials}" | base64 -d > .aws
@@ -18,3 +18,4 @@ export AWS_CONFIG_FILE=.aws
 aws_args=( --endpoint-url http://localhost:4567 )
 aws s3 ls "${aws_args[@]}"
 aws s3 sync "${aws_args[@]}" ./website/ s3://crossplane-s3-bucket --acl public-read
+curl -v -k -H "Host: localhost.localstack.cloud" http://localhost:4566
