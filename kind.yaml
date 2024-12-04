@@ -30,13 +30,14 @@ nodes:
   # Mount the docker socket from the host machine to the kind node
   - hostPath: /var/run/docker.sock
     containerPath: /var/run/docker.sock
-# Worker nodes
-- role: worker
-  extraMounts:
-  - hostPath: /var/run/docker.sock
-    containerPath: /var/run/docker.sock
 
-- role: worker
-  extraMounts:
-  - hostPath: /var/run/docker.sock
-    containerPath: /var/run/docker.sock
+# Worker nodes
+#- role: worker
+#  extraMounts:
+#  - hostPath: /var/run/docker.sock
+#    containerPath: /var/run/docker.sock
+
+#- role: worker
+#  extraMounts:
+#  - hostPath: /var/run/docker.sock
+#    containerPath: /var/run/docker.sock
